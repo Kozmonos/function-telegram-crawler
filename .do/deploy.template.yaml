@@ -1,0 +1,13 @@
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+functions:
+- github:
+    branch: master
+    deploy_on_push: true
+    repo:  Kozmonos/function-telegram-crawler
+  name: telegram
+  routes:
+  - path: /
+  source_dir: /
+name: kozmonos
