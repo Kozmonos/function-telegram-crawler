@@ -11,18 +11,18 @@ jobs:
         working-directory: packages/telegram/crawl
       - name: Run tests
         run: python3 -m unittest packages/telegram/**/test/*_test.py -v
-  # deploy-function:
-  #   needs: test
-  #   name: 🎉 Deploy
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Install doctl
-  #       uses: digitalocean/action-doctl@v2
-  #       with:
-  #         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-  #     - name: Deploy function install
-  #       run: doctl serverless install
-  #     - name: Doctl connect function
-  #       run: doctl serverless connect contact
-  #     - name: Deploy function
-  #       run: doctl serverless deploy .
+  deploy-function:
+    needs: test
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Deploy function install
+        run: doctl serverless install
+      - name: Doctl connect function
+        run: doctl serverless connect contact
+      - name: Deploy function
+        run: doctl serverless deploy .
