@@ -5,3 +5,4 @@
 **/__deployer__.zip
 **/*.session
 **/venv
+**/virtualenv

@@ -1,5 +1,4 @@
 import os
-import asyncio
 from telethon.sync import TelegramClient
 from telethon.sessions import StringSession
 import time
@@ -24,16 +23,15 @@ class Bot:
 
    self.client = client
 
-  async def _last_posts(self, channel_name,limit):
+  def _last_posts(self, channel_name,limit):
       # Get the channel entity
-      channel_entity = await self.client.get_entity(channel_name)
+      channel_entity =  self.client.get_entity(channel_name)
       # Get the last 10 messages
-      messages = await self.client.get_messages(channel_entity, limit= limit) 
+      messages =  self.client.get_messages(channel_entity, limit= limit) 
       return messages
     
   def get_last_posts(self, channel_name,limit=10):
-      loop = asyncio.get_event_loop()
-      return loop.run_until_complete(self._last_posts(channel_name,limit))
+      return self._last_posts(channel_name,limit)
     
   def get_last_posts_telegram(self,telegram_channels):
     response_data = {}

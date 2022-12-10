@@ -1,5 +1,5 @@
 from ..config import config
-from ..crawl import main
+from ..__main__ import main
 import unittest
 
 class ValidationTest(unittest.TestCase):

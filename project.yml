@@ -1,5 +1,9 @@
 packages:
   - name: telegram
-    actions:
+    functions:
       - name: crawl
+        environment:
+          TELEGRAM_API_ID: "${TELEGRAM_API_ID}"
+          TELEGRAM_API_HASH: "${TELEGRAM_API_HASH}"
+          TOKEN: "${TOKEN}"
         runtime: 'python:default'
